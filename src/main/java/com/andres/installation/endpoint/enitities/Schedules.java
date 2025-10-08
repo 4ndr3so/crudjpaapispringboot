@@ -40,9 +40,10 @@ public class Schedules {
 
     private String idTechnician;
     private String idOperation;
-    private Date startOperation;
 
+    private Date startOperation;
     private Date endOperation;
+    
 
     public Long getId() {
         return id;

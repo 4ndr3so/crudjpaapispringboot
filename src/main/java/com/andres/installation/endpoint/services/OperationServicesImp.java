@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.andres.installation.endpoint.enitities.Operation;
+import com.andres.installation.endpoint.enitities.Schedules;
 import com.andres.installation.endpoint.enitities.Technician;
 import com.andres.installation.endpoint.repository.OperationRepository;
 import com.andres.installation.endpoint.repository.ScheduleRepository;
@@ -33,6 +34,12 @@ public class OperationServicesImp implements OperationServices {
 
          return    null;
         
+    }
+
+    @Override
+    public List<Schedules> getSchedulesTehcnician(long id) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 

@@ -16,6 +16,7 @@ public class RequestEvent {
     @JsonProperty("end_time")
     private Instant end;
 
+    
     public String getType() {
         return type;
     }

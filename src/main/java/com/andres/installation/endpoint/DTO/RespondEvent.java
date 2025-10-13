@@ -1,35 +1,23 @@
 package com.andres.installation.endpoint.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RespondEvent {
-    private String message;
+  private String message;
 
-    private Long technicianId;
+  @JsonProperty("technician_id")
+  private Long technicianId;
 
-    private Long instalationId;
+  @JsonProperty("installation_id")
+  private Long installationId;
 
-    public String getMessage() {
-        return message;
-    }
+  public RespondEvent(String message, Long technicianId, Long installationId) {
+    this.message = message;
+    this.technicianId = technicianId;
+    this.installationId = installationId;
+  }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Long getTechnicianId() {
-        return technicianId;
-    }
-
-    public void setTechnicianId(Long technicianId) {
-        this.technicianId = technicianId;
-    }
-
-    public Long getInstalationId() {
-        return instalationId;
-    }
-
-    public void setInstalationId(Long instalationId) {
-        this.instalationId = instalationId;
-    }
-
-    
+  public String getMessage() { return message; }
+  public Long getTechnicianId() { return technicianId; }
+  public Long getInstallationId() { return installationId; }
 }

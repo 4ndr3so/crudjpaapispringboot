@@ -6,4 +6,5 @@ import com.andres.installation.endpoint.enitities.Technician;
 
 public interface TechnicianRepository extends JpaRepository<Technician,Long> {
     
+    
 }

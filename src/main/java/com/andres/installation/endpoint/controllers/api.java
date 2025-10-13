@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,16 +66,18 @@ public class api {
         return operati.getSchedule();
     }
 
-    @PostMapping("/installation_assignments")
-    public RespondEvent postInstallationAssignment(@RequestBody RequestEvent event) {
-        return operati.instalationAssignation(event);
-    }
+
 
     @GetMapping("/technicians/{id}/schedule")
-    public Optional<Schedules> getTechnicianSchedule(@PathVariable long id) {
-        return operati.getSchedulesTehcnician(id);
+    public List<Schedules> getTechnicianSchedule(@PathVariable long id) {
+        return operati.findAllByTechnician(id);
     }
     
     
     
+  @PostMapping("/installation_assignments")
+  public ResponseEntity<RespondEvent> assign(@RequestBody RequestEvent req) {
+
+    return ResponseEntity.ok(operati.instalationAssignation(req));
+  }
 }

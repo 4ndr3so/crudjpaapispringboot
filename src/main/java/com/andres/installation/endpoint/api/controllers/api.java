@@ -1,5 +1,4 @@
-package com.andres.installation.endpoint.controllers;
-
+package com.andres.installation.endpoint.api.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,21 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.andres.installation.endpoint.DTO.RequestEvent;
-import com.andres.installation.endpoint.DTO.RespondEvent;
-import com.andres.installation.endpoint.enitities.Operation;
-import com.andres.installation.endpoint.enitities.Schedules;
-import com.andres.installation.endpoint.enitities.Technician;
-import com.andres.installation.endpoint.services.OperationServicesImp;
+import com.andres.installation.endpoint.api.DTO.RequestEvent;
+import com.andres.installation.endpoint.api.DTO.RespondEvent;
+import com.andres.installation.endpoint.app.services.OperationServicesImp;
+import com.andres.installation.endpoint.infra.enitities.Operation;
+import com.andres.installation.endpoint.infra.enitities.SchedulesEntity;
+import com.andres.installation.endpoint.infra.enitities.Technician;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-
 
 @RestController
 @RequestMapping("/api/v1")
 public class api {
-    
+
     @Autowired
     private OperationServicesImp operati;
 
@@ -50,34 +48,35 @@ public class api {
     }
 
     @PostMapping("/schedules")
-    public String postSchedule(@RequestBody Schedules schedule) {
+    public String postSchedule(@RequestBody SchedulesEntity schedule) {
         operati.saveSchedule(schedule);
         return "Schedule saved successfully";
     }
-    
 
     @GetMapping("/operations")
     public List<Operation> getOperations() {
         return operati.getOperation();
     }
 
+    @GetMapping("/technicians/{id}/schedule")
+    public List<SchedulesEntity> getTechnicianSchedule(@PathVariable long id) {
+        return operati.findAllByTechnician(id);
+    }
+
     @GetMapping("/schedules")
-    public List<Schedules> getSchedules() {
+    public List<SchedulesEntity> getSchedules() {
         return operati.getSchedule();
     }
 
+    @PostMapping("/installation_assignments")
+    public ResponseEntity<RespondEvent> assign(@RequestBody RequestEvent req) {
 
-
-    @GetMapping("/technicians/{id}/schedule")
-    public List<Schedules> getTechnicianSchedule(@PathVariable long id) {
-        return operati.findAllByTechnician(id);
+        return ResponseEntity.ok(operati.instalationAssignation(req));
     }
-    
-    
-    
-  @PostMapping("/installation_assignments")
-  public ResponseEntity<RespondEvent> assign(@RequestBody RequestEvent req) {
 
-    return ResponseEntity.ok(operati.instalationAssignation(req));
-  }
+    @PostMapping("/installation_assignments2")
+    public ResponseEntity<RespondEvent> assign2(@RequestBody RequestEvent req) {
+
+        return ResponseEntity.ok(operati.instalationAssignationOpt(req));
+    }
 }

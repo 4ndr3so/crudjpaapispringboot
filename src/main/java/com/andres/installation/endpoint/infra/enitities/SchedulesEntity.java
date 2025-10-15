@@ -1,4 +1,4 @@
-package com.andres.installation.endpoint.enitities;
+package com.andres.installation.endpoint.infra.enitities;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.TemporalType;
 @Entity
 @Table(name="horarios")
-public class Schedules {
+public class SchedulesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +35,9 @@ public class Schedules {
     @jakarta.persistence.Temporal(TemporalType.TIMESTAMP)
     private Date endOperation;
 
-    public Schedules() {}
+    public SchedulesEntity() {}
 
-    public Schedules(Long id, Long idTechnician, String idOperation, Date startOperation, Date endOperation) {
+    public SchedulesEntity(Long id, Long idTechnician, String idOperation, Date startOperation, Date endOperation) {
         this.id = id;
         this.idTechnician = idTechnician;
         this.idOperation = idOperation;

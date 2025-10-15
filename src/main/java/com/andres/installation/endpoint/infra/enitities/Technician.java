@@ -1,4 +1,4 @@
-package com.andres.installation.endpoint.enitities;
+package com.andres.installation.endpoint.infra.enitities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

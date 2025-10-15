@@ -1,4 +1,4 @@
-package com.andres.installation.endpoint.DTO;
+package com.andres.installation.endpoint.api.DTO;
 
 import java.time.Instant;
 
@@ -16,7 +16,7 @@ public class RequestEvent {
     @JsonProperty("end_time")
     private Instant end;
 
-    
+
     public String getType() {
         return type;
     }

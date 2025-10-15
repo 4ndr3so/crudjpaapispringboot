@@ -1,4 +1,4 @@
-package com.andres.installation.endpoint.DTO;
+package com.andres.installation.endpoint.api.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
